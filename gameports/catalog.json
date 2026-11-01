@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "ports": {
+    "openomf": {
+      "order": 12,
+      "title": "OpenOMF / OMFAGA",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/omf2097/openomf.git",
+        "commit": "4a94a754bac06d9b43780f8355307a83e0a52d04",
+        "submodules": false
+      },
+      "contentPolicy": "Engine source is MIT. Original One Must Fall 2097 data is user-supplied and is not bundled.",
+      "runtimeData": {
+        "mode": "auto-fetch",
+        "dataset": "omf2097-assets",
+        "manifest": "gameports/runtime-data.json"
+      }
+    }
+  }
+}
