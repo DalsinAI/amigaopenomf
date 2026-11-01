@@ -1,5 +1,13 @@
 {
   "schema": 1,
+  "buildDependencies": {
+    "amigachrome-guest": {
+      "kind": "git",
+      "url": "https://github.com/DalsinAI/amigachrome-guest.git",
+      "commit": "8c570397a613f1df1adc4702164603a37b5956dd",
+      "submodules": false
+    }
+  },
   "ports": {
     "openomf": {
       "order": 12,
@@ -16,6 +24,17 @@
         "dataset": "omf2097-assets",
         "manifest": "gameports/runtime-data.json"
       }
+    },
+    "cdogs-sdl": {
+      "order": 11,
+      "title": "C-Dogs SDL",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/cxong/cdogs-sdl.git",
+        "commit": "8263a6f0200a71498f8c47bd0fce0f2d2d678d84",
+        "submodules": false
+      },
+      "contentPolicy": "Code is GPLv2 with BSD components. Upstream data is described as CC0/CC-BY/CC-BY-SA, but doc/README_DATA.md records historical provenance caveats for some legacy campaigns/sounds; do not publish the bundled-data package until that review is closed."
     }
   }
 }

@@ -9,4 +9,24 @@ is included where the port needs it. Source revisions and downloadable runtime
 data are pinned; proprietary game data remains external and must be supplied
 lawfully by the user.
 
+Prepare every source and build dependency at its pinned revision:
+
+```sh
+python3 scripts/game_port_prepare.py check --game all
+python3 scripts/game_port_prepare.py prepare --game all --allow-network
+python3 scripts/game_port_prepare.py verify --game all
+```
+
+This prepares OpenOMF, the C-Dogs SDL ENet source used by the port, and the
+AmigaChrome guest AGA profile entirely inside `build/game-ports/`. The build can
+then run without the former GamePorts checkout:
+
+```sh
+sh build-amigaos3.sh
+```
+
+The cross compiler/SDK is still supplied by `STOVE` (default:
+`$HOME/AmigaChrome/stoves/os32-gcc16`). Original One Must Fall 2097 game data is
+not redistributed.
+
 GamePorts no longer owns a second implementation of this port.
