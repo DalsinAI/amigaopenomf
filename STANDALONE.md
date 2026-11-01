@@ -1,6 +1,6 @@
 # Standalone port repository
 
-`amigaopenomf` is the canonical home of the AmigaOS 3.x / AmigaChrome work for
+`amigaopenomf` is the canonical home of the AmigaOS 3.x / AmiCradle work for
 `OpenOMF`. Its history was split from `DalsinAI/amigachrome-gameports` without
 flattening the commits.
 
@@ -18,7 +18,7 @@ python3 scripts/game_port_prepare.py verify --game all
 ```
 
 This prepares OpenOMF, the C-Dogs SDL ENet source used by the port, and the
-AmigaChrome guest AGA profile entirely inside `build/game-ports/`. The build can
+AmiCradle guest AGA profile entirely inside `build/game-ports/`. The build can
 then run without the former GamePorts checkout:
 
 ```sh
@@ -26,7 +26,7 @@ sh build-amigaos3.sh
 ```
 
 The cross compiler/SDK is still supplied by `STOVE` (default:
-`$HOME/AmigaChrome/stoves/os32-gcc16`). Original One Must Fall 2097 game data is
+`$HOME/AmiCradle/stoves/os32-gcc16`). Original One Must Fall 2097 game data is
 not redistributed.
 
 GamePorts no longer owns a second implementation of this port.
