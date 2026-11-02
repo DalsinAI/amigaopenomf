@@ -7,7 +7,7 @@ SRC=${1:-"$ROOT/build/game-ports/sources/openomf"}
 OUT=${2:-"$ROOT/build/os3/openomf"}
 WORK="$OUT/work"
 BUILD="$OUT/build"
-GUEST=${GUEST_PORT_LAYER:-"$ROOT/build/game-ports/dependencies/amigachrome-guest"}
+GUEST=${GUEST_PORT_LAYER:-"$ROOT/build/game-ports/dependencies/amicradle-guest"}
 STOVE=${STOVE:-"$HOME/AmiCradle/stoves/os32-gcc16"}
 P="$STOVE/prefix"
 SYS="$P/m68k-amigaos"
@@ -67,7 +67,7 @@ Target: AmigaOS 3.x / AC090 / 68040 + FPU
 Compiler: $("$CC" --version | head -1)
 Renderer: native ACGame indexed AGA
 Audio: NULL first-light backend
-ACGame source: DalsinAI/amigachrome-guest at pinned campaign commit
+ACGame source: DalsinAI/amicradle-guest at pinned campaign commit
 Original One Must Fall 2097 data is NOT bundled.
 Place user-supplied OMF2097 data under PROGDIR:resources before launch.
 EOF
