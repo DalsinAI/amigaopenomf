@@ -6,6 +6,13 @@
       "url": "https://github.com/DalsinAI/amicradle-guest.git",
       "commit": "8c570397a613f1df1adc4702164603a37b5956dd",
       "submodules": false
+    },
+    "libxmp": {
+      "kind": "git",
+      "url": "https://github.com/libxmp/libxmp.git",
+      "commit": "bed660f8e530d399c38f27a5a7732f4e79740585",
+      "submodules": false,
+      "note": "libxmp 4.6.3 (MIT), static, for OpenOMF's PSM music"
     }
   },
   "ports": {
