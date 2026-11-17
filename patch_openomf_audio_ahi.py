@@ -38,6 +38,9 @@ def main() -> int:
     for name in ("ahi_backend.c", "ahi_backend.h"):
         shutil.copy2(HERE / "amiga-audio" / name, ahi / name)
     shutil.copy2(HERE / "amiga-audio/audio_sources_amiga.c", w / "src/game/audio/audio_sources_amiga.c")
+    # the real psm_source.c is built, so the first-light stub must not be in
+    # the tree (CMake's source glob would pick it up too)
+    (w / "src/audio/music_sources/psm_source_amiga_stub.c").unlink(missing_ok=True)
 
     cmake = w / "CMakeLists.txt"
     t = cmake.read_text(encoding="utf-8")
