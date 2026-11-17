@@ -26,6 +26,13 @@ def main() -> int:
         "add_definitions(-DOPENOMF_AMIGAAGA=1 -D__amigaos__=1 -DARG_REPLACE_GETOPT=0)",
         1,
     )
+    # libnix has no fseeko/ftello (the vendored miniz uses them); its off_t
+    # and long are both 32 bits, so fseek/ftell are the same calls
+    text = text.replace(
+        "add_definitions(-DOPENOMF_AMIGAAGA=1 -D__amigaos__=1 -DARG_REPLACE_GETOPT=0)",
+        "add_definitions(-DOPENOMF_AMIGAAGA=1 -D__amigaos__=1 -DARG_REPLACE_GETOPT=0 -Dfseeko=fseek -Dftello=ftell)",
+        1,
+    )
 
     old = """    add_library(openomf::enet INTERFACE IMPORTED)
     target_link_libraries(openomf::enet INTERFACE enet)
