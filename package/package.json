@@ -1,0 +1,77 @@
+{
+  "drawer": "OpenOMF",
+  "archive": "openomf-{version}-68040",
+  "members": [
+    {
+      "name": "openomf",
+      "build": "openomf",
+      "check": "executable_sha256"
+    },
+    {
+      "name": "openomf.info",
+      "repo": "icons/openomf.info"
+    },
+    {
+      "name": "ReadMe",
+      "readme": "package/ReadMe.in"
+    },
+    {
+      "name": "ReadMe.info",
+      "repo": "icons/ReadMe.info"
+    },
+    {
+      "name": "LICENSE.txt",
+      "build": "LICENSE"
+    },
+    {
+      "name": "LICENSE.txt.info",
+      "repo": "icons/LICENSE.txt.info"
+    },
+    {
+      "name": "resources",
+      "tar": "resources.tar"
+    }
+  ],
+  "aminet": [
+    [
+      "Short",
+      "OpenOMF, the One Must Fall 2097 engine, on AGA"
+    ],
+    [
+      "Author",
+      "OpenOMF: the OpenOMF team; Amiga port: AmiCradle Team"
+    ],
+    [
+      "Uploader",
+      "AmiCradle Team"
+    ],
+    [
+      "Type",
+      "game/fight"
+    ],
+    [
+      "Version",
+      "{version}"
+    ],
+    [
+      "Requires",
+      "AmigaOS 3.2, 68040/68060 with FPU, AGA (or RTG via ACGame), OMF2097 data (the Installer fetches it)"
+    ],
+    [
+      "Architecture",
+      "m68k-amigaos >= 3.2"
+    ]
+  ],
+  "drawer_icon": "icons/OpenOMF.info",
+  "root": [
+    {
+      "name": "Install-OpenOMF",
+      "repo": "package/installer/Install-OpenOMF",
+      "installer": true
+    },
+    {
+      "name": "Install-OpenOMF.info",
+      "repo": "package/installer/Install-OpenOMF.info"
+    }
+  ]
+}

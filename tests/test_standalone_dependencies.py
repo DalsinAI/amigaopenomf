@@ -13,7 +13,7 @@ class StandaloneDependencyContractTests(unittest.TestCase):
         )
         self.assertEqual(set(catalog["ports"]), {"openomf", "cdogs-sdl"})
         self.assertEqual(
-            set(catalog["buildDependencies"]), {"amicradle-guest"}
+            set(catalog["buildDependencies"]), {"amicradle-guest", "libxmp"}
         )
         for source in (
             *(port["source"] for port in catalog["ports"].values()),
@@ -29,6 +29,7 @@ class StandaloneDependencyContractTests(unittest.TestCase):
         self.assertIn(
             'build/game-ports/dependencies/amicradle-guest', build
         )
+        self.assertIn('build/game-ports/dependencies/libxmp', build)
         self.assertNotIn('build/game-ports/port-layer', build)
 
 

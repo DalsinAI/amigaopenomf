@@ -38,3 +38,4 @@ reports/
 # Editor/OS
 .DS_Store
 *~
+/build-amiga-package/
