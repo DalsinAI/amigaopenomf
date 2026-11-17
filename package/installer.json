@@ -1,6 +1,6 @@
 {
   "name": "OpenOMF",
-  "version": "4a94a75-amigaos3-rc1",
+  "version": "4a94a75-amigaos3-rc2",
   "drawer": "OpenOMF",
   "program": "openomf",
   "cpu": "68040",

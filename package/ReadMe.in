@@ -12,6 +12,8 @@ Requirements
 
 - AmigaOS 3.2, a 68040 or 68060 with an FPU.
 - AGA, or an RTG board (SetEnv ACGame/Display RTG).
+- AHI, with a unit set in Prefs/AHI, for sound and music (without it
+  the game runs silent).
 - One Must Fall 2097's data. It is freeware: the Installer downloads it
   from omf2097.com (needs C:Atlas and a network), or copies it from your
   own copy.
@@ -29,13 +31,14 @@ Playing
 
 - Double-click the openomf icon. The keyboard plays both players; the
   game's own menus set the keys.
+- Sound and music play through AHI at 22050 Hz by default; the game's
+  audio menu offers 11025 Hz (lighter on a 68040) and 44100 Hz.
 
 What this build leaves out
 --------------------------
 
-- Sound and music: this build has only OpenOMF's silent audio back end.
-  An AHI back end is the next step.
 - Network play.
+- Remixed music packs (they need Opus): the original PSM music plays.
 
 This is a release candidate: it has been built, not yet played through
 on a lab. Report problems at https://github.com/DalsinAI/amigaopenomf.
@@ -47,6 +50,7 @@ OpenOMF commit
 @UPSTREAM_COMMIT@,
 AGA renderer and ACGame from DalsinAI/amicradle-guest
 @GUEST_COMMIT@,
+music through libxmp 4.6.3 (MIT),
 built with GFOpenAmigaGCC @COMPILER_RELEASE@ from DalsinAI/amigaopenomf
 commit @REPOSITORY_COMMIT@.
 The program's SHA-256 is
