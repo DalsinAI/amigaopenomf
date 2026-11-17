@@ -5,8 +5,10 @@
  * (double buffered). Each block: the music source renders 16-bit frames
  * into the block (as SDL_mixer's music hook does), then the three sound
  * channels are mixed on top. Sound sources are 8-bit unsigned mono at their
- * own (pitched) rate; they are resampled with a 16.16 fixed-point step and
- * mixed with integer gains, so the inner loop has no FPU instructions.
+ * own (pitched) rate; they are resampled with a 16.16 fixed-point step
+ * (the position kept as whole frames and a 16-bit fraction, so a sound of
+ * any length plays) and mixed with integer gains, so the inner loop has no
+ * FPU instructions.
  *
  * The game's calls (play, stop, fade, pan, volume, music) take the
  * context's semaphore briefly; the mixer holds it while it fills a block.
@@ -40,7 +42,8 @@ static const audio_sample_rate supported_sample_rates[] = {
 typedef struct ahi_channel {
     unsigned char *data;       /* our copy of the source's bytes (8-bit unsigned) */
     unsigned long len;         /* frames */
-    unsigned long pos;         /* 16.16 */
+    unsigned long pos;         /* frames */
+    unsigned long frac;        /* 0 .. 65535: the fraction of a frame */
     unsigned long step;        /* 16.16 */
     int volume;                /* 0 .. 127 */
     int gain_l, gain_r;        /* 0 .. 256, from the panning */
@@ -93,7 +96,7 @@ static void mix_block(ahi_context *ctx, WORD *out, unsigned frames) {
         const long base = (long)ch->volume * ctx->sound_volume; /* 0 .. 32512 */
         WORD *o = out;
         for(unsigned f = 0; f < frames; f++) {
-            unsigned long i = ch->pos >> 16;
+            unsigned long i = ch->pos;
             if(i >= ch->len) {
                 ch->playing = 0;
                 break;
@@ -122,7 +125,9 @@ static void mix_block(ahi_context *ctx, WORD *out, unsigned frames) {
                 o[0] = (WORD)clampi((int)m, -32768, 32767);
                 o += 1;
             }
-            ch->pos += ch->step;
+            ch->frac += ch->step & 0xFFFF;
+            ch->pos += (ch->step >> 16) + (ch->frac >> 16);
+            ch->frac &= 0xFFFF;
         }
     }
 }
@@ -275,6 +280,7 @@ static bool play_pcm_sound(void *userdata, int channel, const sound_source *src,
     ch->data = copy;
     ch->len = src->len;
     ch->pos = 0;
+    ch->frac = 0;
     ch->step = ((unsigned long)src->freq << 16) / ctx->rate;
     ch->volume = clampi(volume, 0, 127);
     pan_gains(panning, &ch->gain_l, &ch->gain_r);
