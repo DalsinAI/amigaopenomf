@@ -31,8 +31,8 @@ mkdir -p "$WORK/src/vendored"
 cp -a "$CDOGS_SRC/src/cdogs/enet" "$WORK/src/vendored/enet"
 cp -a "$GUEST/gameports/acgame" "$WORK/src/vendored/acgame"
 
-python3 "$GUEST/gameapply_aga_profile.py" "$WORK" \
-  --overlay "$GUEST/gameoverlay"
+python3 "$GUEST/gameports/openomf/apply_aga_profile.py" "$WORK" \
+  --overlay "$GUEST/gameports/openomf/overlay"
 python3 "$HERE/patch_enet_amiga.py" "$WORK/src/vendored/enet"
 python3 "$HERE/patch_openomf_amigaos3.py" "$WORK" \
   --stub "$HERE/modmanager_amiga_stub.c"
